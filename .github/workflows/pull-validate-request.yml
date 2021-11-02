@@ -1,15 +1,13 @@
-# This is a basic workflow to help you get started with Actions
-
+---
 name: Packer Validate on Pull Requests
 
-# Controls when the workflow will run
+# Controls when the action will run.
+# Triggers the workflow on push or pull request events but only for the main branch
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  
+  # Workflow is triggered on pull requests
   pull_request:
-    branches: 
-      - 'main'
-
+    # Workflow will only be triggered for pull requests on "main" branch
+    branches: [ main ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,16 +18,16 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Validate Packer Template
-        run: hashicorp/packer-github-actions@master
-        with:
-          command: validate
-          arguments: -syntax-only #ONLY VALIDATE SYNTAX
-          target: ami.json
-        env:
-          PACKER_LOG: 1
+    # Ref: https://github.com/marketplace/actions/packer-github-actions
+    - name: Validate Packer Template
+      uses: hashicorp/packer-github-actions@master
+      with:
+        command: validate
+        arguments: -syntax-only # only validate syntax
+        target: ami.json
+      env:
+        PACKER_LOG: 1 # enable debug log for packer
