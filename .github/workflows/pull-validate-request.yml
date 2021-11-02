@@ -9,8 +9,6 @@ on:
   pull_request:
     branches: [ main ]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -27,15 +25,10 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Validate Packer Template
-        run: hashicorp/packer-github-actions@main
+        run: hashicorp/packer-github-actions@master
         with:
           command: validate
           arguments: -syntax-only #ONLY VALIDATE SYNTAX
           target: ami.json
         env:
           PACKER_LOG: 1
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
