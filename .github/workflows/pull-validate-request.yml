@@ -30,4 +30,5 @@ jobs:
         arguments: -syntax-only # only validate syntax
         target: ami.json
       env:
+        
         PACKER_LOG: 1 # enable debug log for packer
