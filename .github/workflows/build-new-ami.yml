@@ -38,4 +38,8 @@ jobs:
           arguments: "-color=false -on-error=abort"
           target: ami.json
         env:
+          aws_shareAccount : ${{ secrets.aws_shareAccount }}
+          aws_instance_type : ${{ secrets.aws_instance_type }}
+          SOURCE_AMI: ${{ secrets.SOURCE_AMI }}
+          subnet_id: ${{ secrets.subnet_id }}
           PACKER_LOG: 1
