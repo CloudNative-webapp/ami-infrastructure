@@ -7,7 +7,8 @@
         "source_ami": "",
         "aws_instance_type": "",
         "ssh_username": "ubuntu",
-        "aws_shareAccount":""
+        "aws_shareAccount":"",
+        "test":""
     },
     "builders": [
         {
