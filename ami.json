@@ -7,14 +7,12 @@
         "source_ami": "",
         "aws_instance_type": "",
         "ssh_username": "ubuntu",
-        "aws_shareAccount":""
+        "aws_shareAccount":"",
+        "test":""
     },
     "builders": [
         {
             "type": "amazon-ebs",
-            "access_key": "{{user `aws_access_key`}}",
-            "secret_key": "{{user `aws_secret_key`}}",
-            "profile":"dev",
             "region": "{{user `aws_region`}}",
             "instance_type": "{{user `aws_instance_type`}}",
             "subnet_id": "{{user `subnet_id`}}",
