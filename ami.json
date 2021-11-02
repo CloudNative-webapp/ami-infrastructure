@@ -5,7 +5,7 @@
         "aws_region": "",
         "subnet_id": "",
         "source_ami": "",
-        "aws_instance_type": "",
+        "aws_instance_type": "t2.micro",
         "ssh_username": "ubuntu",
         "aws_shareAccount":"",
         "test":""
@@ -24,7 +24,7 @@
             "ami_name": "csye6225_{{timestamp}}",
             "ami_users": "{{user `aws_shareAccount`}}",
             "source_ami_filter": {
-                "owners": ["762020531997"],
+                "owners": ["{{user `owner`}}"],
                 "most_recent": true
              },
             "ami_description": "Ubuntu AMI for Cloud native web app",

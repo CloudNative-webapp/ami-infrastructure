@@ -39,7 +39,7 @@ jobs:
           target: ami.json
         env:
           aws_shareAccount : ${{ secrets.aws_shareAccount }}
-          aws_instance_type : ${{ secrets.aws_instance_type }}
           SOURCE_AMI: ${{ secrets.SOURCE_AMI }}
           subnet_id: ${{ secrets.subnet_id }}
+          owner: ${{ secrets.owner }}
           PACKER_LOG: 1
