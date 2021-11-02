@@ -1,0 +1,52 @@
+{
+    "variables": {
+        "aws_access_key": "",
+        "aws_secret_key": "",
+        "aws_region": "",
+        "subnet_id": "",
+        "source_ami": "",
+        "aws_instance_type": "",
+        "ssh_username": "ubuntu",
+        "aws_shareAccount":""
+    },
+    "builders": [
+        {
+            "type": "amazon-ebs",
+            "access_key": "{{user `aws_access_key`}}",
+            "secret_key": "{{user `aws_secret_key`}}",
+            "profile":"dev",
+            "region": "{{user `aws_region`}}",
+            "instance_type": "{{user `aws_instance_type`}}",
+            "subnet_id": "{{user `subnet_id`}}",
+            "source_ami": "{{user `source_ami`}}",
+            "skip_region_validation": true,
+            "ssh_username": "{{user `ssh_username`}}",
+            "ami_name": "csye6225_{{timestamp}}",
+            "ami_users": "{{user `aws_shareAccount`}}",
+            
+            "ami_description": "Ubuntu AMI for Cloud native web app",
+            "launch_block_device_mappings": [
+                {
+                    "device_name": "/dev/sda1",
+                    "volume_size": 8,
+                    "volume_type": "gp2",
+                    "delete_on_termination": true
+                }
+            ]
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "environment_vars": [
+                "FOO=foo"
+            ],
+            "inline": [
+                "sudo apt-get update",
+                "curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -",
+                "sudo apt-get install nodejs",
+                "node --version"
+            ]
+        }
+    ]
+}
