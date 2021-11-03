@@ -24,7 +24,7 @@
             "ami_name": "csye6225_{{timestamp}}",
             "ami_users": "{{user `ami_users`}}",
             "source_ami_filter": {
-                "owners": ["{{user `OWNER`}}"],
+                "owners": ["{{user `owner`}}"],
                 "most_recent": true
              },
             "ami_description": "Ubuntu AMI for Cloud native web app",
