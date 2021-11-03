@@ -8,7 +8,7 @@
         "aws_instance_type": "t2.micro",
         "ssh_username": "ubuntu",
         "owner": "{{env `owner`}}",
-        "aws_shareAccount":"{{ env `aws_shareAccount` }}"
+        "ami_users":"{{ env `AMI_USERS` }}"
     },
     "builders": [
         {
@@ -22,7 +22,7 @@
             "skip_region_validation": true,
             "ssh_username": "{{user `ssh_username`}}",
             "ami_name": "csye6225_{{timestamp}}",
-            "ami_users": "{{user `aws_shareAccount`}}",
+            "ami_users": "{{user `ami_users`}}",
             "source_ami_filter": {
                 "owners": ["self"],
                 "most_recent": true
