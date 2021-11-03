@@ -37,9 +37,7 @@ jobs:
           command: build
           arguments: "-color=false -on-error=abort"
           target: ami.json
+          varFile: 'vars.json'
         env:
-          owner : ${{env `owner`}}
-          subnet_id : ${{env `subnet_id`}}
-          aws_shareAccount : ${{ env `aws_shareAccount` }}
           SOURCE_AMI: ${{ secrets.SOURCE_AMI }}
           PACKER_LOG: 1

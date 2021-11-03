@@ -1,6 +1,5 @@
 {
-    
-    
-   
+    "subnet_id" : "{{env `subnet_id`}}",
+    "aws_shareAccount" : "{{ env `aws_shareAccount` }}"
     
 }
