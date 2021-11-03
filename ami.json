@@ -23,10 +23,7 @@
             "ssh_username": "{{user `ssh_username`}}",
             "ami_name": "csye6225_{{timestamp}}",
             "ami_users": "{{user `aws_shareAccount`}}",
-            "source_ami_filter": {
-                "owners": ["self"],
-                "most_recent": true
-             },
+            
             "ami_description": "Ubuntu AMI for Cloud native web app",
             "launch_block_device_mappings": [
                 {
