@@ -34,10 +34,12 @@ jobs:
       - name: Build artifact
         uses: hashicorp/packer-github-actions@master
         with:
-          command: build -var-file=vars.json
+          command: build
           arguments: "-color=false -on-error=abort"
           target: ami.json
         env:
-          aws_shareAccount : ${{ secrets.aws_shareAccount }}
+          owner : ${{env `owner`}}
+          subnet_id : ${{env `subnet_id`}}
+          aws_shareAccount : ${{ env `aws_shareAccount` }}
           SOURCE_AMI: ${{ secrets.SOURCE_AMI }}
           PACKER_LOG: 1
