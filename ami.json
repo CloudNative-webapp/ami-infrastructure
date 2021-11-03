@@ -7,7 +7,7 @@
         "source_ami": "",
         "aws_instance_type": "t2.micro",
         "ssh_username": "ubuntu",
-        "owner": "{{env `owner`}}",
+        "owner": "{{env `OWNER`}}",
         "ami_users":"{{ env `AMI_USERS` }}"
     },
     "builders": [
@@ -24,7 +24,7 @@
             "ami_name": "csye6225_{{timestamp}}",
             "ami_users": "{{user `ami_users`}}",
             "source_ami_filter": {
-                "owners": ["self"],
+                "owners": ["{{user `OWNER`}}"],
                 "most_recent": true
              },
             "ami_description": "Ubuntu AMI for Cloud native web app",
