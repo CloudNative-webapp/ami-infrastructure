@@ -37,9 +37,7 @@ jobs:
           command: build
           arguments: "-color=false -on-error=abort"
           target: ami.json
-          # varFile: 'vars.json'
         env:
-          OWNER: ${{ secrets.OWNER }}
           SOURCE_AMI: ${{ secrets.SOURCE_AMI }}
           AMI_USERS : ${{ secrets.AMI_USERS }}
           PACKER_LOG: 1
